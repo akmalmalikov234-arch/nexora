@@ -1,9 +1,10 @@
 fastapi
 uvicorn[standard]
-python-dotenv
 sqlalchemy
 psycopg[binary]
 python-multipart
-pwdlib[argon2]
 python-jose[cryptography]
+pwdlib[argon2]
+pydantic
 email-validator
+python-dotenv

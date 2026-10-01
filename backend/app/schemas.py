@@ -1,50 +1,27 @@
 from datetime import datetime
 from typing import Literal
 
-from pydantic import BaseModel, ConfigDict, EmailStr, Field
+from pydantic import BaseModel, EmailStr, ConfigDict, Field
 
 
 class UserCreate(BaseModel):
     email: EmailStr
-    password: str = Field(
-        min_length=8,
-        max_length=128
-    )
+    password: str = Field(min_length=12, max_length=128)
 
 
 class LoginRequest(BaseModel):
     email: EmailStr
-    password: str = Field(
-        min_length=1,
-        max_length=128
-    )
-    admin_code: str | None = Field(
-        default=None,
-        max_length=256
-    )
+    password: str
+    admin_code: str | None = None
 
 
-class TokenResponse(BaseModel):
+class Token(BaseModel):
     access_token: str
-    token_type: str = "bearer"
+    token_type: str
 
 
-class UserResponse(BaseModel):
-    model_config = ConfigDict(
-        from_attributes=True
-    )
-
-    id: int
-    email: EmailStr
-    is_admin: bool
-    is_active: bool
-    created_at: datetime
-
-
-class AppResponse(BaseModel):
-    model_config = ConfigDict(
-        from_attributes=True
-    )
+class AppOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
 
     id: int
     name: str
@@ -55,15 +32,11 @@ class AppResponse(BaseModel):
     file_name: str
     sha256: str
     size_bytes: int
-    download_count: int
     status: str
+    download_count: int
     uploader_id: int
     created_at: datetime
 
 
-class AppStatusUpdate(BaseModel):
-    status: Literal[
-        "approved",
-        "rejected",
-        "blocked"
-    ]
+class StatusUpdate(BaseModel):
+    status: Literal["approved", "rejected", "blocked"]

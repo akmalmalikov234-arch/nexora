@@ -20,6 +20,16 @@ class Token(BaseModel):
     token_type: str
 
 
+class UserResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
+    email: str
+    is_admin: bool
+    is_active: bool
+    created_at: datetime
+
+
 class AppResponse(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 

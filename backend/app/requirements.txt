@@ -1,9 +1,0 @@
-fastapi
-uvicorn[standard]
-python-dotenv
-sqlalchemy
-psycopg[binary]
-python-multipart
-pwdlib[argon2]
-python-jose[cryptography]
-email-validator

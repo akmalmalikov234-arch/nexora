@@ -42,5 +42,9 @@ class AppOut(AppResponse):
     pass
 
 
-class StatusUpdate(BaseModel):
+class AppStatusUpdate(BaseModel):
     status: Literal["approved", "rejected", "blocked"]
+
+
+class StatusUpdate(AppStatusUpdate):
+    pass

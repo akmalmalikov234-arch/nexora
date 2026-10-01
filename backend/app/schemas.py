@@ -20,7 +20,7 @@ class Token(BaseModel):
     token_type: str
 
 
-class AppOut(BaseModel):
+class AppResponse(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
     id: int
@@ -36,6 +36,10 @@ class AppOut(BaseModel):
     download_count: int
     uploader_id: int
     created_at: datetime
+
+
+class AppOut(AppResponse):
+    pass
 
 
 class StatusUpdate(BaseModel):
